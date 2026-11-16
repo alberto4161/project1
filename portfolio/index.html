@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Alberto Rodriguez | Portfolio</title>
+<meta name="description" content="Projects, experience and resume of Alberto Rodriguez. College soccer player, NCAA champion, soccer event and media work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../vendor/lenis.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="mark" href="#top">Alberto Rodriguez</a>
+  <nav aria-label="Primary">
+    <a href="#work">Work</a><a href="#experience">Experience</a><a href="#soccer">Soccer</a><a href="#field">On the field</a><a href="#resume">Resume</a><a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <img class="hero-img" src="../images/IMG_7850.jpeg" alt="Alberto standing on the pitch under stadium floodlights at night, tournament credential around his neck" fetchpriority="high">
+    <div class="hero-copy">
+      <h1>Alberto<br>Rodriguez</h1>
+      <p>College soccer player, NCAA champion, and a builder who gets close to the game. Projects, experience and resume below.</p>
+      <div class="hero-actions"><a class="btn" href="#work">See my work</a><a class="btn ghost" href="#resume">Resume</a></div>
+    </div>
+  </section>
+
+  <section id="work" class="block">
+    <h2 data-reveal>Selected work</h2>
+    <ul class="rows">
+      <li data-reveal><a href="#contact"><span class="r-title">Project title</span><span class="r-desc">[One line on what you built, who it was for, and the result.]</span><span class="r-meta">Year · Tools</span></a></li>
+      <li data-reveal><a href="#contact"><span class="r-title">Project title</span><span class="r-desc">[One line on what you built, who it was for, and the result.]</span><span class="r-meta">Year · Tools</span></a></li>
+      <li data-reveal><a href="#contact"><span class="r-title">Project title</span><span class="r-desc">[One line on what you built, who it was for, and the result.]</span><span class="r-meta">Year · Tools</span></a></li>
+    </ul>
+  </section>
+
+  <section id="experience" class="block split">
+    <h2 data-reveal>Experience</h2>
+    <ol class="timeline">
+      <li data-reveal><time>Dates</time><div><h3>Role, Organization</h3><p>[What you owned, what you shipped, who you worked with.]</p></div></li>
+      <li data-reveal><time>Dates</time><div><h3>Role, Organization</h3><p>[What you owned, what you shipped, who you worked with.]</p></div></li>
+      <li data-reveal><time>2017 to now</time><div><h3>Snow removal, family business</h3><p>Eight winters clearing driveways and walks for homes and local businesses. It is now becoming Rodriguez &amp; Son.</p></div></li>
+    </ol>
+  </section>
+
+  <section id="soccer" class="soccer">
+    <img src="../images/RenderedImage.jpeg" alt="Alberto in a white number 7 kit dribbling the ball up the pitch at dusk" loading="lazy">
+    <div class="soccer-copy">
+      <h2 data-reveal>Played college soccer. Won an NCAA ring.</h2>
+      <p data-reveal>[Your school, years, position, and the championship season. Two or three honest sentences about what the team taught you about showing up, pressure and playing for each other.]</p>
+    </div>
+  </section>
+
+  <section id="field" class="field" aria-label="Photos from the field">
+    <h2 class="field-title">Around the game</h2>
+    <div class="track">
+      <figure><img src="../images/IMG_6949.jpeg" alt="Smiling on the sideline at PayPal Park before the USA v Trinidad and Tobago Gold Cup match" loading="lazy"><figcaption>PayPal Park, Gold Cup, June 2025</figcaption></figure>
+      <figure><img src="../images/IMG_6946.jpeg" alt="Holding the official match ball for USA v Trinidad and Tobago at PayPal Park" loading="lazy"><figcaption>Match ball, USA v Trinidad and Tobago</figcaption></figure>
+      <figure><img src="../images/IMG_6860.jpeg" alt="Seated at the Gold Cup press conference table" loading="lazy"><figcaption>Gold Cup press room</figcaption></figure>
+      <figure><img src="../images/IMG_0032.jpeg" alt="Standing on the pitch at Red Bull Arena during Leagues Cup 2024" loading="lazy"><figcaption>Leagues Cup 2024, Red Bull Arena</figcaption></figure>
+      <figure><img src="../images/IMG_4038.jpeg" alt="Standing pitchside in stadium haze after a USMNT match" loading="lazy"><figcaption>Pitchside after full time</figcaption></figure>
+      <figure><img src="../images/IMG_6057.jpeg" alt="Seated at the Chicago Fire press conference desk" loading="lazy"><figcaption>Chicago Fire press room</figcaption></figure>
+      <figure><img src="../images/IMG_3904.jpeg" alt="Seated at the US Soccer press conference desk" loading="lazy"><figcaption>US Soccer press room</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="resume" class="block resume">
+    <h2 data-reveal>Resume</h2>
+    <p data-reveal>One page, always current.</p>
+    <!-- TODO: save your resume as portfolio/resume.pdf, then remove aria-disabled and the notice below. -->
+    <a class="btn" href="resume.pdf" aria-disabled="true" data-resume>Download resume (PDF)</a>
+    <p class="note" data-resume-note>Resume file not added yet.</p>
+  </section>
+
+  <section id="contact" class="block contact">
+    <h2 data-reveal>Let's talk</h2>
+    <p data-reveal>For roles, projects or just a conversation about the game.</p>
+    <ul>
+      <li><a href="https://www.linkedin.com/in/your-handle">LinkedIn</a></li>
+      <li><a href="mailto:you@example.com">you@example.com</a></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="foot"><span>Alberto Rodriguez</span><a href="../">Rodriguez &amp; Son</a></footer>
+
+<script src="../vendor/motion.js"></script>
+<script src="../vendor/gsap.min.js"></script>
+<script src="../vendor/ScrollTrigger.min.js"></script>
+<script src="../vendor/lenis.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
