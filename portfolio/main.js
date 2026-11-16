@@ -1,46 +1,53 @@
 (() => {
+  'use strict';
+
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) document.documentElement.classList.add('reduce');
+  const nav = document.querySelector('.nav');
+  const hero = document.querySelector('.hero');
 
-  // Resume link: enable once resume.pdf exists.
-  fetch('resume.pdf', { method: 'HEAD' }).then(r => {
-    if (!r.ok) return;
-    const a = document.querySelector('[data-resume]');
-    a.removeAttribute('aria-disabled');
-    document.querySelector('[data-resume-note]').remove();
-  }).catch(() => {});
+  // The top bar turns solid once the hero photo is no longer behind it.
+  new IntersectionObserver(([entry]) => nav.classList.toggle('solid', !entry.isIntersecting), { rootMargin: '-72px 0px 0px 0px' }).observe(hero);
 
-  if (reduce) return;
-  const { animate, inView, stagger } = Motion;
+  // Everything below is enhancement. Without it the page is complete and the photo strip swipes sideways.
+  if (reduce || !window.gsap || !window.ScrollTrigger || !window.Lenis) return;
 
-  // Smooth scroll, driven by GSAP's ticker so ScrollTrigger stays in sync.
+  // Smooth scroll (Lenis), driven by GSAP's ticker so ScrollTrigger stays in sync.
   const lenis = new Lenis({ lerp: 0.1 });
   gsap.registerPlugin(ScrollTrigger);
   lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add(t => lenis.raf(t * 1000));
+  gsap.ticker.add(time => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
-  document.querySelectorAll('a[href^="#"]').forEach(a =>
-    a.addEventListener('click', e => {
-      const t = document.querySelector(a.getAttribute('href'));
-      if (t) { e.preventDefault(); lenis.scrollTo(t, { offset: -10 }); }
-    }));
 
-  // Reveals (Motion): content rises from slight blur as it enters.
-  inView('[data-reveal]', el => {
-    animate(el, { opacity: [0, 1], transform: ['translateY(28px)', 'none'], filter: ['blur(6px)', 'blur(0px)'] },
-      { duration: 0.9, ease: [0.16, 1, 0.3, 1] });
-  }, { margin: '0px 0px -12% 0px' });
-
-  // The one authored moment (GSAP): the photo strip travels sideways as you scroll.
-  const mm = gsap.matchMedia();
-  mm.add('(min-width: 701px)', () => {
-    const track = document.querySelector('.track');
-    const dist = () => track.scrollWidth - innerWidth + 48;
-    gsap.to(track, { x: () => -dist(), ease: 'none',
-      scrollTrigger: { trigger: '.field', start: 'top top', end: () => '+=' + dist(), pin: true, scrub: 0.6, invalidateOnRefresh: true } });
+  document.querySelectorAll('a[href^="#"]:not(.skip)').forEach(link => {
+    link.addEventListener('click', event => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      event.preventDefault();
+      lenis.scrollTo(target, { offset: target.id === 'top' ? 0 : -64 });
+      history.replaceState(null, '', link.getAttribute('href'));
+    });
   });
 
-  // Hero parallax.
-  gsap.to('.hero-img', { yPercent: 8, ease: 'none',
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  // The one authored moment (GSAP): the matchday photos travel sideways while the page holds still.
+  gsap.matchMedia().add('(min-width: 701px)', () => {
+    const field = document.querySelector('.field');
+    const track = field.querySelector('.track');
+    const distance = () => Math.max(0, track.scrollWidth - field.clientWidth);
+    gsap.to(track, {
+      x: () => -distance(),
+      ease: 'none',
+      scrollTrigger: { trigger: field, start: 'center center', end: () => '+=' + distance(), pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true }
+    });
+  });
+
+  // The ledger fills in line by line the first time it comes into view (Motion).
+  if (window.Motion) {
+    const { animate, inView, stagger } = Motion;
+    const rows = document.querySelectorAll('.ledger tbody tr');
+    rows.forEach(row => { row.style.opacity = '0'; });
+    inView('.ledger', () => {
+      animate(rows, { opacity: [0, 1] }, { duration: 0.5, delay: stagger(0.08), ease: 'easeOut' });
+      animate('.ledger td span', { transform: ['translateX(14px)', 'translateX(0px)'] }, { duration: 0.7, delay: stagger(0.08), ease: [0.16, 1, 0.3, 1] });
+    }, { amount: 0.3 });
+  }
 })();
