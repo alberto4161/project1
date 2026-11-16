@@ -5,5 +5,20 @@
       "maxFindings": 5,
       "maxChars": 8000
     }
+  },
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "portfolio/style.css"
+        ],
+        "createdAt": "2026-11-16T21:13:44.192Z",
+        "reason": "Claude: the 4px double rule on .ledger td is an accounting-paper column rule separating figures from labels, not a card accent"
+      }
+    ]
   }
 }
