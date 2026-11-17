@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" data-season="snow">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rodriguez &amp; Son | Snow Removal and Yard Care in Chicago</title>
+<meta name="description" content="Father and son snow removal, fall cleanup and lawn care for homes and local businesses on Chicago's North Side, downtown and in the suburbs. Eight winters of experience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,700..900&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../vendor/lenis.css">
+<link rel="stylesheet" href="style.css">
+<noscript><style>[role="tabpanel"][hidden]{display:grid!important}.tabs{display:none}</style></noscript>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="#top">Rodriguez &amp; Son</a>
+  <a class="call" href="#quote">Get a quote</a>
+</header>
+
+<main id="top">
+  <section class="stage" aria-labelledby="headline">
+    <div class="scene">
+      <canvas id="fx" aria-hidden="true"></canvas>
+      <div class="intro">
+        <h1 id="headline">Father and son. Eight winters of clearing snow.</h1>
+        <p class="lead">Snow removal, fall cleanup and lawn care for homes and local businesses on Chicago's North Side, downtown and in the suburbs.</p>
+        <div class="tabs" role="tablist" aria-label="Services by season">
+          <button role="tab" id="t-snow" aria-controls="p-snow" aria-selected="true">Snow</button>
+          <button role="tab" id="t-fall" aria-controls="p-fall" aria-selected="false" tabindex="-1">Fall</button>
+          <button role="tab" id="t-lawn" aria-controls="p-lawn" aria-selected="false" tabindex="-1">Lawn</button>
+        </div>
+      </div>
+      <div class="ground" aria-hidden="true"></div>
+    </div>
+
+    <div class="panels">
+      <section role="tabpanel" id="p-snow" aria-labelledby="t-snow">
+        <h2>Snow removal</h2>
+        <p>Our main work. Driveways, walks and entrances cleared so you can get out and customers can get in.</p>
+        <ul>
+          <li>Driveways for homes</li>
+          <li>Walkways, steps and porches</li>
+          <li>Business entrances and sidewalks</li>
+          <li>Salt and ice melt</li>
+        </ul>
+      </section>
+      <section role="tabpanel" id="p-fall" aria-labelledby="t-fall" hidden>
+        <h2>Fall cleanup</h2>
+        <p>Get the yard ready for winter before the first flake lands.</p>
+        <ul>
+          <li>Leaf raking and removal</li>
+          <li>Beds and yard cleanup</li>
+          <li>Final mow of the season</li>
+          <li>Haul-away</li>
+        </ul>
+      </section>
+      <section role="tabpanel" id="p-lawn" aria-labelledby="t-lawn" hidden>
+        <h2>Lawn and basic landscaping</h2>
+        <p>Neat, regular upkeep for spring and summer.</p>
+        <ul>
+          <li>Mowing</li>
+          <li>Trimming and edging</li>
+          <li>Mulch and bed cleanup</li>
+          <li>Weekly or one-time visits</li>
+        </ul>
+      </section>
+    </div>
+  </section>
+
+  <section class="band area" aria-labelledby="area-h">
+    <h2 id="area-h">We work on Chicago's North Side, downtown and in the suburbs.</h2>
+    <p>Not sure you're in range? Put your address in the quote request and we'll tell you.</p>
+  </section>
+
+  <section class="band how" aria-labelledby="how-h">
+    <h2 id="how-h">How it works</h2>
+    <ol>
+      <li><b>Tell us about the job.</b> Your address, what you need, and whether it's a home or a business.</li>
+      <li><b>We send a quote.</b> A clear price before any work starts.</li>
+      <li><b>We show up.</b> You get the same two people, every visit.</li>
+    </ol>
+  </section>
+
+  <section class="band quote" id="quote" aria-labelledby="quote-h">
+    <div>
+      <h2 id="quote-h">Ask for a quote</h2>
+      <p>Send a few details. We'll get back to you.</p>
+    </div>
+    <form id="quote-form" novalidate>
+      <label>Name<input name="name" autocomplete="name" required></label>
+      <label>Phone or email<input name="contact" autocomplete="email" required></label>
+      <label>Address or town<input name="where" autocomplete="street-address"></label>
+      <label>Service
+        <select name="service">
+          <option>Snow removal</option><option>Fall cleanup</option><option>Lawn care</option><option>Not sure yet</option>
+        </select>
+      </label>
+      <label>Home or business?
+        <select name="kind"><option>Home</option><option>Business</option></select>
+      </label>
+      <button class="btn" type="submit">Send request</button>
+      <p class="status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+</main>
+
+<footer class="foot"><span>Rodriguez &amp; Son</span><span>Chicago, Illinois</span></footer>
+
+<script src="../vendor/lenis.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
